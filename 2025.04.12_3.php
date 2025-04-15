@@ -1,42 +1,26 @@
 <?php
 
-// $arry =[
-//     "key" => 10,
-// ];
-
-// if (isset($arry["key"])) {
-//     $arry['key'] *= 10 ;
-// }else{
-//     $arry['key'] = 1;
-// }
-
-// echo $arry["key"];
-
-#위에 식을 간단히 쓰는게 삼항 연산자 
-
-// $arry =[
-//     "key" => 10,
-// ];
-
-// $arry ["key"] = isset($arry["key"]) ? $arry["key"] * 10 : 1;
-// echo $arry["key"];
-
-
-#null연산자  현시점에서느 배열에 키에 10을 곱햇지만 값이 잇을때 아무것도 안한다 이때 사용
-
-$arry =[
-    "key" => 10,
-];
-
-if (isset($arry["key"])) {
-    $arry['key'] *= 10 ;
-}else{
-    $arry['key'] = 1;
+//상수사용법
+const TAX_RATE = 0.1;
+//두개 쓰면 에러 
+// const TAX_RATE = 0.1;
+function with_tax($base_price,$tax_rate= 0.1){
+    $sum_price = $base_price + ($base_price * $tax_rate);
+    $sum_price = round($sum_price);
 }
-$arry ["key"] = isset($arry["key"]) ? $arry["key"] * 10 : 1;
-//이게 null 연산자
-$arry["key"] = $arry["key"] ?? 1;
 
-echo $arry["key"];
+$price = with_tax(1000,0.08);
+echo $price;
 
+#defined 상수가 정의 되어잇는지 확인 
+if (defined("tax_rate")){
+    // conset TAX_RATE =0.1; 오류 conset은 IF문 안에서는 불가능 
+    //아 참고로 conset함수내에서도 불가능
+    define("tax_rate" , 0.1);
+    // define(constant_name: "tax_rate" , 0.1); define 역시 두번은 불가능
+}
 
+// 전역함수가 실행됫나 확인하는법법
+// if(funtion_exists("fn1")){
+//     echo"fn1 is called";
+// }

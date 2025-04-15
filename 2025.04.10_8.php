@@ -1,13 +1,19 @@
 <?php
+/**
+ * 
+ * @param string $student 生徒
+ * @param bool $is_absent true:欠席 false:出席
+ * @return void
+ */
 
-function filer_even($arr){
-    $new_arr = [];
-    foreach($arr as $a){
-        if ($a % 2 == 0) {
-            $new_arr[] = $a;
-        }
-    }
-    return $new_arr;
+function counter($step = 1){
+    global $num;
+    $num += $step;
+    echo $num;
+    return $num;
 }
 
-print_r(filter_even([1, 2, 3, 4, 5]));
+$num = 0;
+
+counter(2);
+counter(4);
